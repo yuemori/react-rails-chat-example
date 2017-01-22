@@ -17,6 +17,7 @@ group :default do
   gem 'turbolinks', '~> 5'
   gem 'jbuilder', '~> 2.5'
   gem 'bcrypt'
+  gem 'active_model_serializers'
 end
 
 group :development, :test do

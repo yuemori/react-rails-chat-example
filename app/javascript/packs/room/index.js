@@ -61,7 +61,7 @@ export default class Room extends React.Component {
 
   render() {
     const messages = this.state.messages.map((message) => {
-      return <Message key={message.id} content={message.content} />
+      return <Message key={message.id} username={message.user.name} content={message.content} />
     });
 
     const style = {

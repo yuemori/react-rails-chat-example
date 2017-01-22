@@ -2,14 +2,15 @@ class MessagesController < ApplicationController
   before_action :set_room, only: [:create]
 
   def index
-    @messages = Message.where(room_id: params[:room_id])
+    @messages = Message.includes(:user).where(room_id: params[:room_id])
 
-    render json: @messages
+    render json: @messages, each_serializer: MessageSerializer
   end
 
   def create
     @message = Message.new(message_params)
     @message.room = @room
+    @message.user = current_user
 
     if @message.save
       head :created
@@ -25,6 +26,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :user_id)
   end
 end
