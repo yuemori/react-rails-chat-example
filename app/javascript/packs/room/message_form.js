@@ -10,6 +10,13 @@ export default class MessageForm extends React.Component {
     this.setState({ content: event.target.value });
   };
 
+  onClick() {
+    if(this.state.content) {
+      this.props.onClick(this.state.content);
+      this.setState({ content: '' });
+    };
+  };
+
   render() {
     return(
       <div className="row">
@@ -17,14 +24,15 @@ export default class MessageForm extends React.Component {
           <input
             name="content"
             onChange={this.onChange.bind(this)}
+            value={this.state.content}
           />
         </div>
         <div className="col s2 m2 l2">
-          <button onClick={() => this.props.onClick(this.state.content)} className="btn-large">
+          <button onClick={this.onClick.bind(this)} className="btn-large">
             送信
           </button>
         </div>
       </div>
     )
-  }
+  };
 };

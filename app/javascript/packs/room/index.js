@@ -7,6 +7,7 @@ import MessageForm from './message_form';
 export default class Room extends React.Component {
   constructor() {
     super();
+    this.scrollToBottom = this.scrollToBottom.bind(this);
     this.state = {
       messages: []
     };
@@ -32,6 +33,10 @@ export default class Room extends React.Component {
       });
   };
 
+  componentDidUpdate() {
+    this.scrollToBottom();
+  };
+
   sendMessage(content) {
     const csrfNode = document.getElementsByName('csrf-token')[0];
     request
@@ -47,6 +52,13 @@ export default class Room extends React.Component {
       });
   };
 
+  scrollToBottom() {
+    const messages = this.messageList;
+    if(messages) {
+      messages.scrollTop = messages.scrollHeight;
+    };
+  };
+
   render() {
     const messages = this.state.messages.map((message) => {
       return <Message key={message.id} content={message.content} />
@@ -59,7 +71,7 @@ export default class Room extends React.Component {
 
     return(
       <div>
-        <div style={style}>
+        <div style={style} ref={(node) => {this.messageList = node}}>
           {messages}
         </div>
         <MessageForm onClick={(content) => this.sendMessage(content)} />
