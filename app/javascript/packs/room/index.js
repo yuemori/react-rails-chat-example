@@ -66,14 +66,14 @@ export default class Room extends React.Component {
 
     const style = {
       overflow: "scroll",
-      height: "400px"
+      height: "300px"
     }
 
     return(
       <div>
-        <div style={style} ref={(node) => {this.messageList = node}}>
+        <ul className="collection" style={style} ref={(node) => {this.messageList = node}}>
           {messages}
-        </div>
+        </ul>
         <MessageForm onClick={(content) => this.sendMessage(content)} />
       </div>
     )

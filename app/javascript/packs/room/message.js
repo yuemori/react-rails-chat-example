@@ -2,9 +2,7 @@ import React from 'react';
 
 const Message = (props) => {
   return(
-    <div>
-      <p>{props.content}</p>
-    </div>
+    <li className="collection-item">{props.content}</li>
   );
 };
 

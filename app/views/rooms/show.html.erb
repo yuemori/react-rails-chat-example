@@ -1,4 +1,5 @@
-<div id="room" data-room-id="<%= @room.id %>"></div>
+<h1><%= @room.name %></h2>
+<div id="room" style="margin-bottom: 20px;" data-room-id="<%= @room.id %>"></div>
 <%= javascript_pack_tag 'room-component' %>
 
 <%= link_to 'Back', rooms_path, class: 'btn' %>
