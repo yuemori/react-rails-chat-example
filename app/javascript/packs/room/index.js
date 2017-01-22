@@ -13,6 +13,14 @@ export default class Room extends React.Component {
   };
 
   componentDidMount() {
+    App.messages = App.cable.subscriptions.create('MessagesChannel', {
+      received: function(data) {
+        this.setState({
+          messages: this.state.messages.concat(data.message),
+        });
+      }.bind(this),
+    });
+
     request
       .get(`/rooms/${this.props.roomId}/messages`)
       .set('Accept', 'application/json')
