@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav id="navbar"></nav>
+      <%= javascript_pack_tag 'navbar-component' %>
+    </header>
+    <div class="container">
+      <p id="notice"><%= notice %></p>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

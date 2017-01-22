@@ -12,14 +12,18 @@ export default class MessageForm extends React.Component {
 
   render() {
     return(
-      <div>
-        <input
-          name="content"
-          onChange={this.onChange.bind(this)}
-        />
-        <button onClick={() => this.props.onClick(this.state.content)}>
-          <p>送信</p>
-        </button>
+      <div className="row">
+        <div className="col s10 m10 l10">
+          <input
+            name="content"
+            onChange={this.onChange.bind(this)}
+          />
+        </div>
+        <div className="col s2 m2 l2">
+          <button onClick={() => this.props.onClick(this.state.content)} className="btn-large">
+            送信
+          </button>
+        </div>
       </div>
     )
   }

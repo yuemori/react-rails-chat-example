@@ -1,8 +1,4 @@
-<p id="notice"><%= notice %></p>
-
 <div id="room" data-room-id="<%= @room.id %>"></div>
-
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
-
 <%= javascript_pack_tag 'room-component' %>
+
+<%= link_to 'Back', rooms_path, class: 'btn' %>

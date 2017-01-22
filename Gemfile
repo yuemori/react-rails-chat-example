@@ -27,6 +27,7 @@ group :development, :test do
   gem 'faker'
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
+  gem 'materialize-sass'
 end
 
 group :test do

@@ -52,9 +52,14 @@ export default class Room extends React.Component {
       return <Message key={message.id} content={message.content} />
     });
 
+    const style = {
+      overflow: "scroll",
+      height: "400px"
+    }
+
     return(
       <div>
-        <div>
+        <div style={style}>
           {messages}
         </div>
         <MessageForm onClick={(content) => this.sendMessage(content)} />
