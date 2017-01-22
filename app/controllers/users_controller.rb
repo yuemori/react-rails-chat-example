@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :logged_in_user
+
   def new
     @user = User.new
   end
@@ -7,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      log_in @user
       redirect_to rooms_url, notice: 'Successfly signed up!'
     else
       render :new, notice: 'Failed to signed up'

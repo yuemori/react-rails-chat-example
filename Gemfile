@@ -16,6 +16,7 @@ group :default do
   gem 'jquery-rails'
   gem 'turbolinks', '~> 5'
   gem 'jbuilder', '~> 2.5'
+  gem 'bcrypt'
 end
 
 group :development, :test do

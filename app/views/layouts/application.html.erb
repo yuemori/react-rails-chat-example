@@ -11,8 +11,18 @@
 
   <body>
     <header>
-      <nav id="navbar"></nav>
-      <%= javascript_pack_tag 'navbar-component' %>
+      <nav id="navbar">
+        <div className="nav-wrapper">
+          <a href="#" className="brand-logo">ChatApp</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <%- if logged_in? %>
+              <%= link_to 'Logout', logout_path, method: :delete %>
+            <%- else %>
+              <%= link_to 'Login', login_path %>
+            <%- end %>
+          </ul>
+        </div>
+      </nav>
     </header>
     <div class="container">
       <p id="notice"><%= notice %></p>
